@@ -1,0 +1,643 @@
+/* Home Page Styles */
+.home {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+  background: var(--gradient-hero);
+  color: var(--text-light);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.1)"><polygon points="0,100 1000,0 1000,100"/></svg>');
+  background-size: cover;
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-text h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.2;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hero-text h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--secondary-color);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  opacity: 0.95;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hero-buttons .btn {
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.hero-buttons .btn-primary {
+  background: var(--gradient-secondary);
+  color: var(--text-light);
+  box-shadow: var(--shadow-lg);
+}
+
+.hero-buttons .btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(249, 115, 22, 0.4);
+}
+
+.hero-buttons .btn-secondary {
+  background: transparent;
+  color: var(--text-light);
+  border: 2px solid var(--text-light);
+  box-shadow: var(--shadow);
+}
+
+.hero-buttons .btn-secondary:hover {
+  background-color: var(--text-light);
+  color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bridge-illustration {
+  position: relative;
+  width: 300px;
+  height: 200px;
+}
+
+.bridge {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: var(--gradient-secondary);
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.6);
+}
+
+.water {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.8), rgba(30, 58, 138, 0.6));
+  border-radius: 0 0 150px 150px;
+  animation: wave 3s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Project Info Section */
+.project-info {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.upb-logos {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.logo-container {
+  display: inline-block;
+}
+
+.upb-logo {
+  background: var(--gradient-primary);
+  color: var(--text-light);
+  padding: 30px 50px;
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+.upb-logo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.upb-logo:hover::before {
+  left: 100%;
+}
+
+.logo-text {
+  font-size: 3rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.logo-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.project-details h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: var(--primary-color);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background: var(--background-color);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-secondary);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.project-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.project-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Bolivia Bridges Section */
+.bolivia-bridges {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.bolivia-bridges h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 50px;
+}
+
+.bridges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.bridge-card {
+  background: var(--background-color);
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.bridge-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.bridge-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.bridge-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.bridge-card:hover .bridge-image img {
+  transform: scale(1.05);
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  font-size: 3rem;
+}
+
+.image-placeholder p {
+  font-size: 1rem;
+  margin-top: 10px;
+  opacity: 0.9;
+}
+
+.bridge-info {
+  padding: 25px;
+}
+
+.bridge-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.bridge-info p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.bridge-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.detail {
+  background: var(--surface-color);
+  color: var(--primary-color);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+}
+
+/* Developer Info Section */
+.developer-info {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.developer-info h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: var(--primary-color);
+}
+
+.developer-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--background-color);
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  border: 1px solid var(--border-color);
+}
+
+.developer-avatar {
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.developer-avatar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.avatar-placeholder {
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.developer-details {
+  padding: 40px;
+}
+
+.developer-details h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.developer-title {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+.developer-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.info-item {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.info-item strong {
+  color: var(--primary-color);
+}
+
+/* Features Section */
+.features {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.features h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: var(--primary-color);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.feature-item {
+  text-align: center;
+  padding: 40px 20px;
+  background: var(--background-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.feature-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.feature-item p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Contact Section */
+.contact-section {
+  padding: 80px 0;
+  background: var(--gradient-hero);
+  color: var(--text-light);
+  text-align: center;
+}
+
+.contact-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.contact-section p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  opacity: 0.95;
+}
+
+.contact-section .btn {
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  background: var(--gradient-secondary);
+  color: var(--text-light);
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-lg);
+}
+
+.contact-section .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(249, 115, 22, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-text h2 {
+    font-size: 2rem;
+  }
+  
+  .hero-buttons {
+    justify-content: center;
+  }
+  
+  .bridge-illustration {
+    width: 250px;
+    height: 150px;
+  }
+  
+  .project-grid,
+  .bridges-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .developer-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .developer-avatar {
+    padding: 30px;
+  }
+  
+  .developer-info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .logo-text {
+    font-size: 2.5rem;
+  }
+  
+  .upb-logo {
+    padding: 20px 30px;
+  }
+  
+  .bridge-image {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 60px 0;
+  }
+  
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-text h2 {
+    font-size: 1.5rem;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 250px;
+  }
+  
+  .project-info,
+  .bolivia-bridges,
+  .developer-info,
+  .features,
+  .contact-section {
+    padding: 60px 0;
+  }
+  
+  .bridge-info {
+    padding: 20px;
+  }
+  
+  .bridge-details {
+    flex-direction: column;
+  }
+} 
