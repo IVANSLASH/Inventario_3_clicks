@@ -2,7 +2,9 @@ import {
   createUserWithEmailAndPassword, 
   signInWithEmailAndPassword, 
   updateProfile,
-  sendPasswordResetEmail 
+  sendPasswordResetEmail, 
+  GoogleAuthProvider, 
+  signInWithPopup 
 } from 'firebase/auth';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { auth, db } from './firebase';
@@ -37,6 +39,72 @@ export const registerUser = async (email, password, userData) => {
   } catch (error) {
     console.error('Error al registrar usuario:', error);
     throw error;
+  }
+};
+
+// Iniciar sesión con Google
+export const signInWithGoogle = async () => {
+  const provider = new GoogleAuthProvider();
+  
+  // Configurar scopes y parámetros adicionales
+  provider.addScope('email');
+  provider.addScope('profile');
+  
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+
+    // Verificar si el usuario ya existe en Firestore
+    const userDocRef = doc(db, 'usuarios', user.uid);
+    const userDocSnap = await getDoc(userDocRef);
+    if (!userDocSnap.exists()) {
+      // Crear documento de usuario si es nuevo
+      const userDoc = {
+        uid: user.uid,
+        email: user.email,
+        nombre: user.displayName || '',
+        tipoUsuario: 'C', // Por defecto Técnico Operativo
+        institucion: '',
+        telefono: user.phoneNumber || '',
+        fechaRegistro: new Date().toISOString(),
+        activo: true
+      };
+      await setDoc(userDocRef, userDoc);
+    }
+    return { success: true, user };
+  } catch (error) {
+    console.error('Error al iniciar sesión con Google:', error);
+    
+    // Manejo de errores más específico
+    let errorMessage = 'Error al registrarse/iniciar sesión con Google.';
+    
+    switch (error.code) {
+      case 'auth/popup-closed-by-user':
+        errorMessage = 'La ventana de autenticación fue cerrada. Inténtalo de nuevo.';
+        break;
+      case 'auth/popup-blocked':
+        errorMessage = 'El navegador bloqueó la ventana emergente. Permite ventanas emergentes para este sitio.';
+        break;
+      case 'auth/cancelled-popup-request':
+        errorMessage = 'Solo se puede tener una ventana de autenticación abierta a la vez.';
+        break;
+      case 'auth/operation-not-allowed':
+        errorMessage = 'La autenticación con Google no está habilitada en este proyecto.';
+        break;
+      case 'auth/network-request-failed':
+        errorMessage = 'Error de conexión. Verifica tu conexión a internet.';
+        break;
+      case 'auth/too-many-requests':
+        errorMessage = 'Demasiados intentos. Espera un momento e inténtalo de nuevo.';
+        break;
+      case 'auth/user-disabled':
+        errorMessage = 'Esta cuenta ha sido deshabilitada.';
+        break;
+      default:
+        errorMessage = `Error: ${error.message}`;
+    }
+    
+    throw new Error(errorMessage);
   }
 };
 
